@@ -1,15 +1,18 @@
 # Luhn
+
 Validation and control key generation for credit cards (and more) using Luhn algorithm.
 
 Project utilises Terraform for provisioning cloud resources. Powered by TypeScript, ESlint, Prettier and Husky.
 
 ## What gets provisioned?
+
 - API Gateway
 - Lambda
 
 ## Deployment 🚀
+
 - Run `yarn lint` to lint TS code using both ESLint and Prettier working together
-- Run `yarn script:build-dependency-layer` this will run a bash script to zip up production dependencies and add them to the lamba as a layer
+- Run `yarn script:build-layer` this will run a bash script to zip up production dependencies and add them to the lamba as a layer
 - Run `yarn build` to run TSC to compile TS code to plain JS
 - Run `yarn cleanup` to remove generated files after deployment steps
 - Run `yarn tf:init` to get aws provider plugin downloaded

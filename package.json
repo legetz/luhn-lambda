@@ -4,13 +4,13 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .js,.ts,.tsx ./lambda/src/",
-    "script:build-dependency-layer": "yarn install --prod; ./scripts/build-dependency-layer.sh; yarn install;",
+    "script:build-layer": "yarn install --prod; ./scripts/build-layer.sh; yarn install;",
     "build": "tsc",
     "tf:init": "cd terraform; terraform init",
     "tf:plan": "cd terraform; terraform plan -var-file ./config/terraform.tfvars",
     "tf:apply": "yarn build; cd terraform; terraform apply -var-file ./config/terraform.tfvars; yarn cleanup;",
     "tf:destroy": "cd terraform; terraform destroy -var-file ./config/terraform.tfvars",
-    "deploy:all": "yarn script:build-dependency-layer; yarn tf:apply",
+    "deploy:all": "yarn script:build-layer; yarn tf:apply",
     "update:all": "yarn tf:destroy -auto-approve; yarn deploy:all",
     "cleanup": "rm -rf lambda/dist"
   },
