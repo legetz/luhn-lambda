@@ -36,5 +36,8 @@
   },
   "dependencies": {
     "aws-sdk": "^2.596.0"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
