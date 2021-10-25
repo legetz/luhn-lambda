@@ -1,13 +1,10 @@
 locals {
-  name          = "lambda_starter"
-  author        = "Rahman Younus"
-  email         = "rahman_95@live.co.uk"
+  name          = "luhn-generator"
+  author        = "Leo Jokinen"
   lambda_memory = 128
 
   tags = {
-    Name      = "Lambda Starter Template"
-    GitRepo   = "https://github.com/rahman95/terraform-lambda-typescript-starter"
+    Git       = "https://github.com/legetz/luhn-lambda"
     ManagedBy = "Terraform"
-    Owner     = "${local.email}"
   }
 }
