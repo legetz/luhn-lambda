@@ -1,5 +1,5 @@
 const defaultHeaders = {
-  'Content-Type': 'text/html',
+  'Content-Type': 'application/json',
 };
 
 const response = ({ statusCode, headers = defaultHeaders, body }: ResponseInput): Response => {
@@ -11,7 +11,7 @@ const response = ({ statusCode, headers = defaultHeaders, body }: ResponseInput)
 };
 
 const handler = (): Response => {
-  return response({ statusCode: 200, body: 'Hello World' });
+  return response({ statusCode: 200, body: '{success: true}' });
 };
 
 export { handler };
