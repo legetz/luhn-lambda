@@ -1,22 +1,11 @@
-# Terraform Lambda Typescript Starter 🏗λ
-This is a basic Hello World starter template that utilises terraform for provisioning cloud resources. It is an opionanted starter which 
-uses TypeScript, ESlint, Prettier and Husky.
+# Luhn
+Validation and control key generation for credit cards (and more) using Luhn algorithm.
 
-## Usage 🔬
-*Currently being consumed by these project(s) of mine, will try and keep this list updated*
-- [Serverless Weather 🌦](https://github.com/rahman95/serverless-weather)
+Project utilises Terraform for provisioning cloud resources. Powered by TypeScript, ESlint, Prettier and Husky.
 
-## Tech 🧰
-- Terraform
-- Typescript
-- ESLint
-- Prettier
-- Husky
-
-## What gets provisioned? 🔍
+## What gets provisioned?
 - API Gateway
 - Lambda
-- KMS Setup
 
 ## Deployment 🚀
 - Run `yarn lint` to lint TS code using both ESLint and Prettier working together
