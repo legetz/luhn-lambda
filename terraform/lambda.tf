@@ -6,9 +6,9 @@ data "archive_file" "function_archive" {
 
 resource "aws_lambda_layer_version" "dependency_layer" {
   filename            = "${path.module}/../dist/layers/layers.zip"
-  layer_name          = "dependency_layer"
+  layer_name          = "${local.name}-${var.lambda_stage}-dependencies"
   compatible_runtimes = ["nodejs14.x"]
-  source_code_hash    = "${base64sha256(filebase64("${path.module}/../dist/layers/layers.zip"))}"
+  source_code_hash    = "${filebase64sha256("${path.module}/../dist/layers/layers.zip")}"
 }
 
 resource "aws_lambda_function" "lambda" {
@@ -17,6 +17,7 @@ resource "aws_lambda_function" "lambda" {
   role          = "${aws_iam_role.lambda_role.arn}"
   handler       = "index.handler"
   architectures = ["arm64"]
+  layers        = [aws_lambda_layer_version.dependency_layer.arn]
 
   # Lambda Runtimes can be found here: https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
   runtime     = "nodejs14.x"
