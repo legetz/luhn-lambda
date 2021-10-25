@@ -2,4 +2,6 @@ terraform/.terraform
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 
+lambda/dist
+
 node_modules
