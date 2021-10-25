@@ -31,6 +31,7 @@ data "aws_iam_policy_document" "lambda_document" {
 }
 
 resource "aws_iam_policy" "lambda_policy" {
+  name = "${local.name}-${var.lambda_stage}-lambda"
   policy = "${data.aws_iam_policy_document.lambda_document.json}"
 }
 
