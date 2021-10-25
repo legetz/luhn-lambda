@@ -16,6 +16,7 @@ resource "aws_lambda_function" "lambda" {
   function_name = "${local.name}-${var.lambda_stage}"
   role          = "${aws_iam_role.lambda_role.arn}"
   handler       = "index.handler"
+  architectures = ["arm64"]
 
   # Lambda Runtimes can be found here: https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
   runtime     = "nodejs14.x"
