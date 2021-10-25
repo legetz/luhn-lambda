@@ -36,6 +36,7 @@
         "files": ["lambda/src/**/*.ts"],
         "parser": "@typescript-eslint/parser",
         "rules": {
+          "no-console": "off",
           "no-undef": "off",
           "import/no-unresolved": "off"
         }

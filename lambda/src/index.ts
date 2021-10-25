@@ -13,10 +13,12 @@ const response = ({ statusCode = 200, headers = defaultHeaders, body }: Response
 };
 
 const handler = (): Response => {
+  const newLuhn = luhn.generate('4454066197024125');
+  console.log(`Generated ${newLuhn}`);
   const resp = {
     body: {
       success: true,
-      luhn: luhn.generate('4454066197024125'),
+      luhn: newLuhn,
     },
   };
   return response(resp);
