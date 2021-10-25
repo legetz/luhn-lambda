@@ -1,5 +1,5 @@
 {
-  "name": "terraform-lambda-example",
+  "name": "luhn-lambda",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -12,10 +12,10 @@
     "tf:destroy": "cd terraform; terraform destroy -var-file ./config/terraform.tfvars",
     "deploy:all": "yarn script:build-dependency-layer; yarn tf:apply",
     "update:all": "yarn tf:destroy -auto-approve; yarn deploy:all",
-    "cleanup": "rm -rf lambda/dist/*"
+    "cleanup": "rm -rf lambda/dist"
   },
-  "repository": "git@github.com:rahman95/terraform-lambda-typescript-starter.git",
-  "author": "Rahman Younus <rahman_95@live.co.uk>",
+  "repository": "git@github.com:legetz/luhn-lambda.git",
+  "author": "Leo Jokinen",
   "license": "MIT",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.39",
