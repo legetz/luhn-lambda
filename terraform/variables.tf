@@ -8,6 +8,6 @@ variable "aws_profile" {
   default = "default"
 }
 
-variable "example_secret" {
+variable "lambda_stage" {
   type = string
 }

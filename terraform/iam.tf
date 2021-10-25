@@ -24,7 +24,6 @@ data "aws_iam_policy_document" "lambda_document" {
       "logs:CreateLogStream",
       "logs:PutLogEvents",
       "cloudwatch:PutMetricData",
-      "kms:*",
     ]
 
     resources = ["*"]
@@ -36,14 +35,14 @@ resource "aws_iam_policy" "lambda_policy" {
 }
 
 resource "aws_iam_role" "lambda_role" {
-  name               = "${local.name}-role"
+  name               = "${local.name}-lambda-role"
   assume_role_policy = "${data.aws_iam_policy_document.lambda_assume_role_document.json}"
 
   tags = "${local.tags}"
 }
 
 resource "aws_iam_policy_attachment" "lambda_attachment" {
-  name = "${local.name}-attachment"
+  name = "${local.name}-lambda-attachment"
 
   roles = [
     "${aws_iam_role.lambda_role.name}",

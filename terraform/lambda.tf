@@ -13,7 +13,7 @@ resource "aws_lambda_layer_version" "dependency_layer" {
 
 resource "aws_lambda_function" "lambda" {
   filename      = "${data.archive_file.function_archive.output_path}"
-  function_name = "${local.name}"
+  function_name = "${local.name}-${var.lambda_stage}"
   role          = "${aws_iam_role.lambda_role.arn}"
   handler       = "index.handler"
 
@@ -24,7 +24,7 @@ resource "aws_lambda_function" "lambda" {
 
   environment {
     variables = {
-      "EXAMPLE_SECRET" = "${var.example_secret}"
+      "STAGE" = "${var.lambda_stage}"
     }
   }
 }
