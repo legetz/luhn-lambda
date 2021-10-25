@@ -8,7 +8,7 @@ resource "aws_lambda_layer_version" "dependency_layer" {
   filename            = "${path.module}/../dist/layers/layers.zip"
   layer_name          = "dependency_layer"
   compatible_runtimes = ["nodejs12.x"]
-  source_code_hash    = "${base64sha256(file("${path.module}/../dist/layers/layers.zip"))}"
+  source_code_hash    = "${base64sha256(filebase64("${path.module}/../dist/layers/layers.zip"))}"
 }
 
 resource "aws_lambda_function" "lambda" {
