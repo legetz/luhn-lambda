@@ -1,6 +1,6 @@
 variable "aws_region" {
   type    = string
-  default = "eu-west-2"
+  default = "eu-central-1"
 }
 
 variable "aws_profile" {
