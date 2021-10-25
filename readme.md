@@ -1,4 +1,4 @@
-# Luhn
+# Luhn validation and generation with AWS Lambda
 
 Validation and control key generation for credit cards (and more) using Luhn algorithm.
 
