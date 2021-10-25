@@ -1,6 +1,6 @@
 resource "aws_api_gateway_rest_api" "rest_api" {
-  name        = "${local.name}-${var.lambda_stage}"
-  description = "API Gateway for ${local.name}-${var.lambda_stage} lambda"
+  name        = "${local.name}"
+  description = "API Gateway for ${local.name} lambdas"
 }
 
 resource "aws_api_gateway_resource" "api_gateway" {
