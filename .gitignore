@@ -6,5 +6,6 @@ lambda/dist
 dist
 
 .DS_Store
+response.json
 
 node_modules

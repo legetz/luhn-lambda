@@ -22,3 +22,7 @@ Project utilises Terraform (v1.0.9) for provisioning cloud resources. Powered by
 - Run `yarn tf:destroy` to destroy all the services that were built
 
 You can also simply call `yarn deploy:all` to both zip up an archive and provision the resources together. Similarly you could run `yarn update:all` to destroy all resources and re-provision them.
+
+## Invoking Lambda
+
+- Run `aws lambda invoke --region=eu-central-1 --function-name=luhn-generator-dev response.json`
