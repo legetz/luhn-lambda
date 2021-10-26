@@ -1,10 +1,10 @@
 interface ResponseInput {
   statusCode?: number;
   headers?: object;
-  body: object;
+  body: string;
 }
 interface Response {
   statusCode: number;
   headers: object;
-  body: object;
+  body: string;
 }
