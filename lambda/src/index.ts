@@ -14,7 +14,6 @@ const response = ({ statusCode = 200, headers = defaultHeaders, body }: Response
 
 const handler = (event, context, callback): void => {
   if (event) {
-    console.log('Incoming event: ', event);
     switch (event.path) {
       case '/generate':
         if (event.httpMethod === 'GET' && event.queryStringParameters?.startNumber) {
@@ -50,6 +49,25 @@ const handler = (event, context, callback): void => {
             statusCode: 400,
             body: JSON.stringify({
               errorMessage: 'Specify startNumber and use HTTP GET',
+            }),
+          };
+          callback(null, response(resp));
+        }
+        return;
+      case '/validate':
+        if (event.httpMethod === 'GET' && event.queryStringParameters?.number) {
+          const resp = {
+            body: JSON.stringify({
+              number: event.queryStringParameters.number,
+              isValid: luhn.isValid(event.queryStringParameters.number),
+            }),
+          };
+          callback(null, response(resp));
+        } else {
+          const resp = {
+            statusCode: 400,
+            body: JSON.stringify({
+              errorMessage: 'Specify number and use HTTP GET',
             }),
           };
           callback(null, response(resp));
