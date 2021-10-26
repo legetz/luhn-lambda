@@ -1,6 +1,6 @@
 data "archive_file" "function_archive" {
   type        = "zip"
-  source_dir  = "${path.module}/../lambda/dist"
+  source_dir  = "${path.module}/../lambda/dist/src"
   output_path = "${path.module}/../lambda/dist/function.zip"
 }
 
@@ -8,7 +8,7 @@ resource "aws_lambda_layer_version" "dependency_layer" {
   filename            = "${path.module}/../dist/layers/layers.zip"
   layer_name          = "${local.name}-${var.lambda_stage}-dependencies"
   compatible_runtimes = ["nodejs14.x"]
-  source_code_hash    = "${filebase64sha256("${path.module}/../dist/layers/layers.zip")}"
+  source_code_hash    = filemd5("${path.module}/../dist/layers/layers.zip")
 }
 
 resource "aws_lambda_function" "lambda" {
