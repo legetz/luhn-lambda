@@ -16,10 +16,10 @@ const handler = (): Response => {
   const newLuhn = luhn.generate('4454066197024125');
   console.log(`Generated ${newLuhn}`);
   const resp = {
-    body: {
+    body: JSON.stringify({
       success: true,
       luhn: newLuhn,
-    },
+    }),
   };
   return response(resp);
 };
