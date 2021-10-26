@@ -12,21 +12,22 @@ resource "aws_lambda_layer_version" "dependency_layer" {
 }
 
 resource "aws_lambda_function" "lambda" {
-  filename      = "${data.archive_file.function_archive.output_path}"
-  function_name = "${local.name}-${var.lambda_stage}"
-  role          = "${aws_iam_role.lambda_role.arn}"
-  handler       = "index.handler"
-  architectures = ["arm64"]
-  layers        = [aws_lambda_layer_version.dependency_layer.arn]
+  filename          = data.archive_file.function_archive.output_path
+  function_name     = "${local.name}-${var.lambda_stage}"
+  role              = aws_iam_role.lambda_role.arn
+  handler           = "index.handler"
+  architectures     = ["arm64"]
+  layers            = [aws_lambda_layer_version.dependency_layer.arn]
+  source_code_hash  = data.archive_file.function_archive.output_base64sha256
 
   # Lambda Runtimes can be found here: https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
   runtime     = "nodejs14.x"
   timeout     = "30"
-  memory_size = "${local.lambda_memory}"
+  memory_size = local.lambda_memory
 
   environment {
     variables = {
-      "STAGE" = "${var.lambda_stage}"
+      "STAGE" = var.lambda_stage
     }
   }
 }
@@ -34,7 +35,7 @@ resource "aws_lambda_function" "lambda" {
 resource "aws_lambda_permission" "lambda" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.lambda.function_name}"
+  function_name = aws_lambda_function.lambda.function_name
   principal     = "apigateway.amazonaws.com"
 
   # The "/*/*" portion grants access from any method on any resource
