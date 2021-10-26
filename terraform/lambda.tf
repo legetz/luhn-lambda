@@ -5,10 +5,11 @@ data "archive_file" "function_archive" {
 }
 
 resource "aws_lambda_layer_version" "dependency_layer" {
-  filename            = "${path.module}/../dist/layers/layers.zip"
-  layer_name          = "${local.name}-${var.lambda_stage}-dependencies"
-  compatible_runtimes = ["nodejs14.x"]
-  source_code_hash    = filemd5("${path.module}/../dist/layers/layers.zip")
+  filename                  = "${path.module}/../dist/layers/layers.zip"
+  layer_name                = "${local.name}-${var.lambda_stage}-dependencies"
+  compatible_runtimes       = ["nodejs14.x"]
+  compatible_architectures  = ["arm64"] 
+  source_code_hash          = base64sha256("${path.module}/../dist/layers/layers.zip")
 }
 
 resource "aws_lambda_function" "lambda" {
@@ -30,6 +31,11 @@ resource "aws_lambda_function" "lambda" {
       "STAGE" = var.lambda_stage
     }
   }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_log_group" {
+  name = "/aws/lambda/${aws_lambda_function.lambda.function_name}"
+  retention_in_days = 7
 }
 
 resource "aws_lambda_permission" "lambda" {
