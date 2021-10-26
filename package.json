@@ -36,7 +36,8 @@
   },
   "dependencies": {
     "aws-sdk": "^2.596.0",
-    "luhn-js": "1.1.2"
+    "luhn-js": "1.1.2",
+    "class-validator": "0.13.1"
   },
   "engines": {
     "node": "14.x"
