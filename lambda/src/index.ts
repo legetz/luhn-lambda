@@ -19,7 +19,7 @@ const handler = (event, context, callback): void => {
     const givenNumber = event.queryStringParameters?.number;
     switch (event.path) {
       case '/generate':
-        if (event.httpMethod === 'GET' && givenNumber && isNumberString(givenNumber)) {
+        if (givenNumber && isNumberString(givenNumber)) {
           const amount = parseInt(event.queryStringParameters.amount, 10) || 1;
           if (amount > 100000) {
             const resp = {
@@ -51,14 +51,14 @@ const handler = (event, context, callback): void => {
           const resp = {
             statusCode: 400,
             body: JSON.stringify({
-              errorMessage: 'Specify number parameter and use HTTP GET',
+              errorMessage: 'Specify valid number parameter',
             }),
           };
           callback(null, response(resp));
         }
         return;
       case '/validate':
-        if (event.httpMethod === 'GET' && givenNumber) {
+        if (givenNumber) {
           const resp = {
             body: JSON.stringify({
               number: givenNumber,
@@ -70,7 +70,7 @@ const handler = (event, context, callback): void => {
           const resp = {
             statusCode: 400,
             body: JSON.stringify({
-              errorMessage: 'Specify number parameter and use HTTP GET',
+              errorMessage: 'Specify valid number parameter',
             }),
           };
           callback(null, response(resp));
