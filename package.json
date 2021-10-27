@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "prepare": "husky install",
     "lint": "eslint --ext .js,.ts,.tsx ./lambda/src/",
     "script:build-layer": "yarn install --prod; ./scripts/build-layer.sh; yarn install;",
     "build": "yarn run cleanup; tsc",

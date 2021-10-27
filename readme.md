@@ -9,6 +9,11 @@ Project utilises Terraform (v1.0.9) for provisioning cloud resources. Powered by
 - API Gateway
 - Lambda
 
+## Preparation
+- `nvm use` for setting proper Node.js version
+- `yarn install` for installing dependencies
+- `yarn prepare` for installing Husky pre-push hook
+
 ## Deployment 🚀
 
 - Run `yarn lint` to lint TS code using both ESLint and Prettier working together
