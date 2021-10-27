@@ -9,11 +9,16 @@ resource "aws_api_gateway_resource" "api_gateway" {
   path_part   = "{proxy+}"
 }
 
+resource "aws_api_gateway_api_key" "api_key" {
+  name = "api_key_luhn"
+}
+
 resource "aws_api_gateway_method" "api_gateway_method" {
-  rest_api_id   = "${aws_api_gateway_rest_api.rest_api.id}"
-  resource_id   = "${aws_api_gateway_resource.api_gateway.id}"
-  http_method   = "ANY"
-  authorization = "NONE"
+  rest_api_id      = "${aws_api_gateway_rest_api.rest_api.id}"
+  resource_id      = "${aws_api_gateway_resource.api_gateway.id}"
+  http_method      = "GET"
+  authorization    = "NONE"
+  api_key_required = true
 }
 
 resource "aws_api_gateway_integration" "api_gateway_integration" {
@@ -27,10 +32,11 @@ resource "aws_api_gateway_integration" "api_gateway_integration" {
 }
 
 resource "aws_api_gateway_method" "api_gateway_root_method" {
-  rest_api_id   = "${aws_api_gateway_rest_api.rest_api.id}"
-  resource_id   = "${aws_api_gateway_rest_api.rest_api.root_resource_id}"
-  http_method   = "ANY"
-  authorization = "NONE"
+  rest_api_id      = "${aws_api_gateway_rest_api.rest_api.id}"
+  resource_id      = "${aws_api_gateway_rest_api.rest_api.root_resource_id}"
+  http_method      = "GET"
+  authorization    = "NONE"
+  api_key_required = true
 }
 
 resource "aws_api_gateway_integration" "api_gateway_root_integration" {
