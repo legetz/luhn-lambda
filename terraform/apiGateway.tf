@@ -58,3 +58,28 @@ resource "aws_api_gateway_deployment" "api_gateway_deployment" {
   rest_api_id = "${aws_api_gateway_rest_api.rest_api.id}"
   stage_name  = "${var.lambda_stage}"
 }
+
+resource "aws_api_gateway_usage_plan" "usage_plan" {
+  name = "basic"
+
+  api_stages {
+    api_id = aws_api_gateway_rest_api.rest_api.id
+    stage  = aws_api_gateway_deployment.api_gateway_deployment.stage_name
+  }
+
+  quota_settings {
+    limit  = 100
+    period = "WEEK"
+  }
+
+  throttle_settings {
+    burst_limit = 10
+    rate_limit  = 10
+  }
+}
+
+resource "aws_api_gateway_usage_plan_key" "usage_plan_key" {
+  key_id        = aws_api_gateway_api_key.api_key.id
+  key_type      = "API_KEY"
+  usage_plan_id = aws_api_gateway_usage_plan.usage_plan.id
+}
