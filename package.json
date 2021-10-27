@@ -18,9 +18,8 @@
   "author": "Leo Jokinen",
   "license": "MIT",
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.39",
-    "@types/aws-sdk": "^2.7.0",
-    "@types/node": "^13.1.1",
+    "@types/aws-lambda": "8.10.84",
+    "@types/node": "16.11.6",
     "@typescript-eslint/eslint-plugin": "^2.13.0",
     "@typescript-eslint/parser": "^2.13.0",
     "eslint": "^6.8.0",
@@ -31,15 +30,15 @@
     "husky": "^3.1.0",
     "prettier": "^1.19.1",
     "ts-node": "^8.5.4",
-    "tsc": "^1.20150623.0",
+    "tsc": "2.0.3",
     "typescript": "^3.7.4"
   },
   "dependencies": {
-    "aws-sdk": "^2.596.0",
+    "aws-sdk": "2.1015.0",
     "luhn-js": "1.1.2",
     "class-validator": "0.13.1"
   },
   "engines": {
-    "node": "14.x"
+    "node": "14.18.x"
   }
 }
