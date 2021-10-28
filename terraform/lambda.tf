@@ -9,7 +9,7 @@ resource "aws_lambda_layer_version" "dependency_layer" {
   layer_name                = "${local.name}-${var.lambda_stage}-dependencies"
   compatible_runtimes       = ["nodejs14.x"]
   compatible_architectures  = ["arm64"] 
-  source_code_hash          = base64sha256("${path.module}/../dist/layers/layers.zip")
+  source_code_hash          = filebase64sha256("${path.module}/../dist/layers/layers.zip")
 }
 
 resource "aws_lambda_function" "lambda" {
