@@ -44,6 +44,7 @@
       }
     ],
     "settings": {
+      "import/core-modules": ["aws-sdk"],
       "import/resolver": {
         "node": {
           "paths": ["lambda/src"],
