@@ -10,9 +10,13 @@ Project utilises Terraform (v1.0.9) for provisioning cloud resources. Powered by
 - Lambda
 
 ## Preparation
+
 - `nvm use` for setting proper Node.js version
 - `yarn install` for installing dependencies
 - `yarn prepare` for installing Husky pre-push hook
+- Modify `terraform/remote-state.tf` with your S3 bucket details where Terraform remote state is stored
+  - Remove this file if you intend to use local state for testing purposes
+  - More info at [Terraform S3](https://www.terraform.io/docs/language/settings/backends/s3.html)
 
 ## Deployment 🚀
 
