@@ -7,5 +7,5 @@ dist
 
 .DS_Store
 response.json
-
+coverage
 node_modules
