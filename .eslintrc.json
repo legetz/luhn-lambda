@@ -3,14 +3,12 @@
     "parser": "@typescript-eslint/parser",
     "extends": [
       "eslint:recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
       "plugin:@typescript-eslint/recommended",
       "airbnb-typescript/base",
       "plugin:import/errors",
       "plugin:import/warnings",
       "plugin:import/typescript",
-      "prettier",
-      "prettier/@typescript-eslint"
+      "plugin:prettier/recommended"
     ],
     "plugins": ["@typescript-eslint", "import", "prettier"],
     "env": {
@@ -18,10 +16,11 @@
     },
     "parserOptions": {
       "ecmaVersion": 2017,
-      "sourceType": "module"
+      "sourceType": "module",
+      "project": ["tsconfig.json"]
     },
     "rules": {
-      "prettier/prettier": "error",
+      "prettier/prettier": "warn",
       "class-methods-use-this": "warn",
       "no-await-in-loop": "warn",
       "@typescript-eslint/no-inferrable-types": "off",
@@ -47,7 +46,7 @@
       "import/core-modules": ["aws-sdk"],
       "import/resolver": {
         "node": {
-          "paths": ["lambda/src"],
+          "paths": ["lambda/src","lambda/src/__tests__"],
           "extensions": [".js", ".jsx", ".ts", ".tsx"],
           "moduleDirectory": ["node_modules"]
         }
