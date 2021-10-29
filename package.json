@@ -13,7 +13,8 @@
     "tf:destroy": "cd terraform; terraform destroy -var-file ./config/terraform.tfvars",
     "deploy:all": "yarn script:build-layer; yarn tf:apply",
     "update:all": "yarn tf:destroy -auto-approve; yarn deploy:all",
-    "cleanup": "rm -rf lambda/dist"
+    "cleanup": "rm -rf lambda/dist",
+    "test": "jest"
   },
   "repository": "git@github.com:legetz/luhn-lambda.git",
   "author": "Leo Jokinen",
@@ -30,6 +31,7 @@
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^7.0.4",
+    "jest": "^27.3.1",
     "prettier": "2.4.1",
     "ts-node": "10.4.0",
     "tsc": "2.0.3",
