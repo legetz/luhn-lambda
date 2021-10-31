@@ -4,11 +4,9 @@
         "lib": ["es2017"],
         "moduleResolution": "node",
         "module": "commonJS",
-        "outDir": "./lambda/dist/src",
         "strict": false,
         "target": "es2017",
         "typeRoots": ["src/@types", "node_modules/@types", "../node_modules/@types"]
     },
-    "include": ["./lambda/src/**/*"],
-    "exclude": ["./lambda/src/**/*.test.ts"]
+    "include": ["./lambda/src/**/*"]
 }
