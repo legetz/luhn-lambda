@@ -1,7 +1,7 @@
 import { handler } from './index';
 
 describe('handler function', () => {
-  it('should return 404 when no event is given', done => {
+  it('should return 404 when no event is given', (done) => {
     function callback(error, resp): void {
       try {
         expect(resp?.statusCode).toBe(404);
@@ -13,7 +13,7 @@ describe('handler function', () => {
     }
     handler(null, null, callback);
   });
-  it('should return 404 when odd event is given', done => {
+  it('should return 404 when odd event is given', (done) => {
     function callback(error, resp): void {
       try {
         expect(resp?.statusCode).toBe(404);
@@ -28,7 +28,7 @@ describe('handler function', () => {
 });
 
 describe('handler function, generate path', () => {
-  it('should return 100 numbers', done => {
+  it('should return 100 numbers', (done) => {
     function callback(error, resp): void {
       try {
         expect(resp?.statusCode).toBe(200);
@@ -50,7 +50,7 @@ describe('handler function, generate path', () => {
     };
     handler(event, null, callback);
   });
-  it('should block if amount > 100000', done => {
+  it('should block if amount > 100000', (done) => {
     function callback(error, resp): void {
       try {
         expect(resp?.statusCode).toBe(400);
@@ -69,7 +69,7 @@ describe('handler function, generate path', () => {
     };
     handler(event, null, callback);
   });
-  it('should detect bad number', done => {
+  it('should detect bad number', (done) => {
     function callback(error, resp): void {
       try {
         expect(resp?.statusCode).toBe(400);
@@ -91,7 +91,7 @@ describe('handler function, generate path', () => {
 });
 
 describe('handler function, validate path', () => {
-  it('should detect missing number', done => {
+  it('should detect missing number', (done) => {
     function callback(error, resp): void {
       try {
         expect(resp?.statusCode).toBe(400);
@@ -106,7 +106,7 @@ describe('handler function, validate path', () => {
     };
     handler(event, null, callback);
   });
-  it('should handle valid number', done => {
+  it('should handle valid number', (done) => {
     function callback(error, resp): void {
       try {
         expect(resp?.statusCode).toBe(200);
