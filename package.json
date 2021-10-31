@@ -26,6 +26,7 @@
     "@typescript-eslint/eslint-plugin": "5.2.0",
     "@typescript-eslint/parser": "5.2.0",
     "aws-sdk": "2.1018.0",
+    "aws-sdk-mock": "^5.4.0",
     "eslint": "8.1.0",
     "eslint-config-airbnb-typescript": "14.0.1",
     "eslint-config-prettier": "8.3.0",

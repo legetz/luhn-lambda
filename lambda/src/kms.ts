@@ -1,8 +1,8 @@
-const { KMS } = require('aws-sdk');
+import AWS from 'aws-sdk';
 
 const decryptValue = async (encrypted: string): Promise<string> => {
   try {
-    const kms = new KMS();
+    const kms = new AWS.KMS();
     const res = await kms
       .decrypt({
         CiphertextBlob: Buffer.from(encrypted, 'base64'),
