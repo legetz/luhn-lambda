@@ -2,7 +2,7 @@
 
 Validation and control key generation for credit cards (and more) using Luhn algorithm.
 
-Project utilises Terraform (v1.0.9) for provisioning cloud resources. Powered by TypeScript, ESlint, Prettier, Jest and Husky.
+Project utilises Terraform (v1.3.1) for provisioning cloud resources. Powered by TypeScript, ESlint, Prettier, Jest and Husky.
 
 ## What gets provisioned?
 
